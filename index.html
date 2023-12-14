@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <title>React-1</title>
+        <style>
+            .container {
+                max-width: 1140px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 15px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+
+            let holder = 'nmadr tursin'
+            function App() {
+                const [count, setCount] = React.useState(0)
+                const [text, setText] = React.useState("")
+                const [view, setView] = React.useState(false)
+                const [texting, setTexting] = React.useState("")
+                const addCount = () => {
+                    setCount(count + 1)
+                }
+                return (
+                    <div className="container">
+                        <div className="box">
+                            <div class="puls">
+                                <button onClick={() => setCount(count - 1)}>-</button>
+                                <h2>{count}</h2>
+                                <button onClick={addCount}>+</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="text">
+                                <input type="text" placeholder={holder} value={text} onChange={(e) => setText(e.target.value)} />
+                                <h2>{text}</h2>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <input type={view ? 'password' : 'text'} />
+                            <button onClick={() => setView(!view)}>{view ? "ko'rsat" : "berkit"}</button>
+                        </div>
+                        <div class="box">
+                            <div class="input">
+                                <input className="input" type="text" placeholder='Text kiriting' value={texting} onChange={(e) => setTexting(e.target.value)} />
+                                <h2 className="h2Text">{texting.length < 1 ? 'Malumot yoq' : 'Malumotlaringiz: '}{texting} {(texting.length) + ' ta malumot'}</h2>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+            const app = document.getElementById('root')
+            const root = ReactDOM.createRoot(app)
+            root.render(<App />)
+        </script>
+    </body>
+
+</html>
